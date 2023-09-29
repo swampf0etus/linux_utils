@@ -1,0 +1,5 @@
+[url "https://"]   
+    insteadOf = git://
+[user]
+	email = brett.john.graham@gmail.com
+	name = Brett Graham
