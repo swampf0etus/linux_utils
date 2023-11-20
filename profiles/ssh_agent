@@ -1,0 +1,24 @@
+AGENT_SRC=~/.ssh/agent
+
+if [[ -f $AGENT_SRC ]]
+then
+  . $AGENT_SRC
+else
+  SSH_AGENT_PID=0
+fi
+
+ps $SSH_AGENT_PID | grep -q ssh-agent
+
+if [[ $? -ne 0 ]]
+then
+  ssh-agent > $AGENT_SRC
+  chmod 600 $AGENT_SRC
+  . $AGENT_SRC
+fi
+
+ssh-add -l >/dev/null 
+
+if [[ $? -ne 0 ]]
+then
+  echo "SSH agent has no identities.  Use ssh-add to add identities."
+fi
