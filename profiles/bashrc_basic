@@ -1,4 +1,5 @@
 set -o vi
+export EDITOR=vi
 alias ll='ls -l'
 export PS1='$ '
 export PATH="$HOME/linux_utils/bin:$PATH"
